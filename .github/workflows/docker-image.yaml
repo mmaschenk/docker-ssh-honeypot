@@ -22,7 +22,7 @@ jobs:
         run: echo ${GITHUB_REF}
       - name: Get the version
         id: vars
-        run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+        run: echo ::set-output name=tag::${GITHUB_REF:10}
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v2
         with:
