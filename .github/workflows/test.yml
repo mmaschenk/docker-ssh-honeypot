@@ -36,3 +36,10 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo ${GITHUB_REF}
+          
+      - name: Set a value
+        id: info
+        run: echo '::set-output name=TAGNAME::seethis'
+        
+      - name: Show the value
+        run: echo "The value is ${{ steps.info.outputs.TAGNAME }}"
