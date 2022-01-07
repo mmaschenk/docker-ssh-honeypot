@@ -39,7 +39,7 @@ jobs:
           
       - name: Set a value
         id: info
-        run: echo '::set-output name=TAGNAME::'${GITHUB_REF}
+        run: echo '::set-output name=TAGNAME::'${GITHUB_REF:10}
         
       - name: Show the value
         run: echo "The value is ${{ steps.info.outputs.TAGNAME }}"
