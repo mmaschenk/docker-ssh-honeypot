@@ -25,4 +25,6 @@ if [ -n "${SSH_JSON_LOG_SERVER}" ]; then
 
 fi
 
-exec /bin/ssh-honeypot ${P_INIT_ARGS} -u honeycomb
+DEFAULT_ARGS="-r /home/honeycomb/rsa/sshd-key.rsa -p 2022 -u honeycomb "
+
+exec /bin/ssh-honeypot ${DEFAULT_ARGS}} ${ARGS}
