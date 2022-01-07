@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ssh-honeypot
+  name: ssh-honeypot
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:      
+      app: ssh-honeypot
+  template:
+    metadata:
+      labels:
+        app: ssh-honeypot
+    spec:
+      containers:
+      - name: ssh-honeypot
+        image: ghcr.io/mmaschenk/docker-ssh-honeypot:main
+        ports:
+        - containerPort: 2022
+          protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ssh-honeypot
+spec:
+  type: NodePort
+  externalTrafficPolicy: Local
+  ports:
+  - port: 2022
+    nodePort: 30022
+  selector:
+    app: ssh-honeypot
