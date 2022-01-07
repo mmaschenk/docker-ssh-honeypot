@@ -45,4 +45,4 @@ jobs:
         run: echo "The value is ${{ steps.info.outputs.TAGNAME }}"
         
       - name: Show a context value
-        run: echo "Here is github ref ${{ github.ref }}"
+        run: echo "Here is github ref ${{ github.ref }} and name ${{ github.ref_name }}"
