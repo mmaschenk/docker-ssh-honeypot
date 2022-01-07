@@ -16,13 +16,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Show environment
-        run: env
-      - name: Make tag
-        run: echo ${GITHUB_REF}
-      - name: Get the version
-        id: vars
-        run: echo '::set-output name=tag::'${GITHUB_REF:10}
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v2
         with:
