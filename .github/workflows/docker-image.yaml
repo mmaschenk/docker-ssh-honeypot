@@ -18,6 +18,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Show environment
         run: env
+      - name: Make tag
+        run: echo ${GITHUB_REF}
       - name: Get the version
         id: vars
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
