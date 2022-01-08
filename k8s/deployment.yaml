@@ -50,6 +50,8 @@ spec:
         env:
         - name: ARGS
           value: -l /var/ssh-honeypot/logfile -r /var/ssh-honeypot/sshd-key.rsa -j /var/ssh-honeypot/logfile.json
+        - name: TZ
+          value: Europe/Amsterdam
         ports:
         - containerPort: 2022
           protocol: TCP

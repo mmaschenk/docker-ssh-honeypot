@@ -11,9 +11,9 @@ FROM nlss/base-alpine:3.12
 
 COPY --from=build /git-ssh-honeypot/bin/ssh-honeypot /bin/ssh-honeypot
 
-RUN apk add --update --no-cache libssh-dev json-c-dev openssh \
+RUN apk add --update --no-cache libssh-dev json-c-dev openssh tzdata \
     && adduser --shell /bin/false --disabled-password --gecos "Honeycomb" --home "/home/honeycomb" "honeycomb" \
-    && mkdir -p /home/honeycomb/{log,rsa}
+    && mkdir -p /home/honeycomb/log && mkdir -p /home/honeycomb/rsa
 
 COPY ["./rootfs", "/"]
 
